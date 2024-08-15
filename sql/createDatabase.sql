@@ -1,0 +1,66 @@
+CREATE DATABASE wsimfdDB;
+USE wsimfdDB;
+
+CREATE TABLE wsimfdDB.Users (
+	userID BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+    , username VARCHAR(45) NOT NULL
+    , password VARCHAR(64) NOT NULL
+    , dateJoined DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP()
+    , lastUpdated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP()
+    , email VARCHAR(45)
+    , phone VARCHAR(45)
+    , displayName VARCHAR(45)
+    , bio VARCHAR(255)
+);
+
+CREATE TABLE wsimfdDB.Recipes (
+	recipeID BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+    , recipeName VARCHAR(45) NOT NULL
+    , recipeDescription VARCHAR(45)
+    , dateAdded DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP()
+    , lastUpdated DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP()
+    , contributor BIGINT NOT NULL
+    , adaptedFrom BIGINT
+    , FOREIGN KEY (contributor) REFERENCES wsimfdDB.Users (userID)
+	, FOREIGN KEY (adaptedFrom) REFERENCES wsimfdDB.Recipes (recipeID)
+);
+
+CREATE TABLE wsimfdDB.Ingredients (
+	ingredientID BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+    , dateAdded DATETIME DEFAULT CURRENT_TIMESTAMP
+    , lastUpdated DATETIME DEFAULT CURRENT_TIMESTAMP
+    , description TEXT
+);
+
+CREATE TABLE wsimfdDB.RecipeIngredients (
+	RIID BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+    , dateAdded DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+    , lastUpdated DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+    , quantity VARCHAR(45) 
+    , description VARCHAR(45)
+    , ingredientID BIGINT UNSIGNED NOT NULL
+    , recipeID BIGINT UNSIGNED NOT NULL
+    , FOREIGN KEY (ingredientID) REFERENCES wsimfdDB.Ingredients (ingredientID)
+    , FOREIGN KEY (recipeID) REFERENCES wsimfdDB.Recipes (recipeID)
+);
+
+CREATE TABLE wsimfdDB.UserRecipes (
+	URID BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+    , dateAdded DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+    , lastUpdated DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+    , userID BIGINT UNSIGNED NOT NULL
+    , recipeID BIGINT UNSIGNED NOT NULL
+    , FOREIGN KEY (userID) REFERENCES wsimfdDB.Users (userID)
+    , FOREIGN KEY (recipeID) REFERENCES wsimfdDB.Recipes (recipeID)
+);
+
+CREATE TABLE wsimfdDB.Images (
+	imageID BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+    , dateAdded DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+    , lastUpdated DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+    , imageType ENUM('profile', 'ingredient', 'recipe') NOT NULL
+    , ingredientID BIGINT UNSIGNED 
+    , recipeID BIGINT UNSIGNED
+    , FOREIGN KEY (ingredientID) REFERENCES wsimfdDB.Ingredients (ingredientID)
+    , FOREIGN KEY (recipeID) REFERENCES wsimfdDB.Recipes (recipeID)
+);
