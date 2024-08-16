@@ -2,9 +2,31 @@
 <html>
     <head>
         <title>WSIMFD</title>
+        <link rel="stylesheet" href="../static/polls/css/style.css">
     </head>
 
     <body>
+        <div class='banner' id='siteBanner'>
+            <div>
+                <p>What Should I Make For Dinner?</p>
+            </div>
+            <div>
+                <p>Find Recipes</p>
+            </div>
+            <div>
+                <p>Username</p>
+            </div>
+        </div>
+
+        <div class='banner' id='directoryBanner'>
+            <a>Recipes By:</a>
+            <a class=dirItem>Featured</a>
+            <a class=dirItem>Season</a>
+            <a class=dirItem>Ingredients</a>
+            <a class=dirItem>Prep Time</a>
+            <a class=dirItem>Surprise Me</a>
+        </div>
+
         <h1>What should I make for dinner?</h1>
         {% if element1 %}
         <p>{{element1}}</p>
