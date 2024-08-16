@@ -12,7 +12,7 @@ CREATE TABLE wsimfdDB.Users (
     , phone VARCHAR(45)
     , displayName VARCHAR(45)
     , bio VARCHAR(255)
-    , pfp VARBINARY(255)
+    , pfp VARBINARY(255) -- change implementation/datatype later
 );
 
 -- The following creates a table Recipes to store recipe information
@@ -30,12 +30,31 @@ CREATE TABLE wsimfdDB.Recipes (
 	, FOREIGN KEY (adaptedFrom) REFERENCES wsimfdDB.Recipes (recipeID)
 );
 
+-- The following creates a table Tags to store ingredient or recipe tags 
+CREATE TABLE wsimfdDB.Tags (
+	tagID BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+    , dateAdded DATETIME DEFAULT CURRENT_TIMESTAMP
+    , lastUpdated DATETIME DEFAULT CURRENT_TIMESTAMP
+    , color VARCHAR(7)
+    , tagType ENUM("ingredient", "recipe")
+);
+
 -- The following creates a table Ingredients to store ingredient information
 CREATE TABLE wsimfdDB.Ingredients (
 	ingredientID BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+    , ingredientName VARCHAR(45)
     , dateAdded DATETIME DEFAULT CURRENT_TIMESTAMP
     , lastUpdated DATETIME DEFAULT CURRENT_TIMESTAMP
     , description TEXT
+);
+
+CREATE TABLE wsimfdDB.TagRelationships (  -- this is going to require foreign key constraints I dont want to do right now.
+	TRID BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+    , dateAdded DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+    , lastUpdated DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
+    , taggedID BIGINT UNSIGNED 
+    , FOREIGN KEY (taggedID) REFERENCES wsimfdDB.Ingredients (ingredientID)
+    , FOREIGN KEY (taggedID) REFERENCES wsimfdDB.Recipes (recipeID)
 );
 
 -- The following creates a table RecipeIngredients to store the ingredients involved in a recipe
@@ -77,6 +96,7 @@ CREATE TABLE wsimfdDB.UserGivesIngtContribution (
 -- The following creates a table Images to store uploaded images
 CREATE TABLE wsimfdDB.Images (
 	imageID BIGINT UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT
+    , imageData VARBINARY(20000) -- change implementation/datatype later
     , dateAdded DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
     , lastUpdated DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL
     , imageType ENUM('ingredient', 'recipe') NOT NULL
