@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>WSIMFD</title>
-        <link rel="stylesheet" href="../static/polls/css/style.css">
+        <link rel="stylesheet" href="../static/wsimfd/css/style.css">
     </head>
 
     <body>
@@ -11,20 +11,29 @@
                 <p>What Should I Make For Dinner?</p>
             </div>
             <div>
-                <p>Find Recipes</p>
-            </div>
-            <div>
                 <p>Username</p>
             </div>
         </div>
 
+        <div class='banner' id='sidenav'>
+            <a class=dirItem>Account</a>
+            <a class=dirItem>My Recipes</a>
+            <a class=dirItem>Meal Planner</a>
+            <a class=dirItem>Ingredients Index</a>
+            <a class=dirItem>Settings</a>
+            <a class=dirItem>About Us</a>
+        </div>
+
         <div class='banner' id='directoryBanner'>
-            <a>Recipes By:</a>
-            <a class=dirItem>Featured</a>
-            <a class=dirItem>Season</a>
-            <a class=dirItem>Ingredients</a>
-            <a class=dirItem>Prep Time</a>
-            <a class=dirItem>Surprise Me</a>
+            <div class='container' id='dirBannerContainer'>
+                <a>Recipes By:</a>
+                <a class='dirItem1' id='featured'>Featured</a>
+                <a class='dirItem2' id='season'>Season</a>
+                <a class='dirItem3' id='Ingredients'>Ingredients</a>
+                <a class='dirItem4' id='prepTime'>Prep Time</a>
+                <a class='dirItem5' id='surpriseMe'>Surprise Me</a>
+                <a class='dirItem6' id='findRecipes'>Find Recipes</a>
+            </div>
         </div>
 
         <h1>What should I make for dinner?</h1>

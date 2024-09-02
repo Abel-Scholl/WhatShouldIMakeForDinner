@@ -1,0 +1,59 @@
+:root {
+    --green: #687342; 
+    --pink: #c19791;
+    --tan: #e4dad1;
+    --tan2: #b6a898;
+    --black: #270f0b;
+
+}
+
+body {
+    background-color: var(--tan);
+    margin:0px;
+
+}
+
+#siteBanner {
+    background-color: var(--green);
+    overflow: hidden;
+}
+
+#directoryBanner {
+    background-color: var(--tan);
+    display:flex;
+}
+
+#dirBannerContainer {
+    display: block;
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+#directoryBanner a {
+    float: left;
+    display: block;
+    color: var(--black);
+    text-align: center;
+    text-decoration: none;
+    border: solid 1px var(--tan2);
+    padding: 10px 25px;
+    font-size: 25px;
+}
+
+#sidenav {
+    width:15vw;
+    position: fixed;
+    right: 0px;
+    background: var(--pink);
+    overflow-x: hidden;
+    padding: 8px 0;
+  }
+  
+  #sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: var(--black);
+    display: block;
+  }
+
