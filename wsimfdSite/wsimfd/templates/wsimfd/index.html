@@ -3,42 +3,63 @@
     <head>
         <title>WSIMFD</title>
         <link rel="stylesheet" href="../static/wsimfd/css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
         <div class='banner' id='siteBanner'>
-            <div>
+            <div class='SiteTitle'>
                 <p>What Should I Make For Dinner?</p>
             </div>
-            <div>
-                <p>Username</p>
+            <div class='accountAnchor'>
+                <p>Log In</p>
             </div>
         </div>
 
         <div class='banner' id='sidenav'>
-            <a class=dirItem>Account</a>
-            <a class=dirItem>My Recipes</a>
-            <a class=dirItem>Meal Planner</a>
-            <a class=dirItem>Ingredients Index</a>
-            <a class=dirItem>Settings</a>
-            <a class=dirItem>About Us</a>
+            <a class='arrowDecoration'>
+                <div class="arrow-down"></div>
+            </a>
+            <a class='menuItem'>Account</a>
+            <a class='menuItem'>My Recipes</a>
+            <a class='menuItem'>Meal Planner</a>
+            <a class='menuItem'>Ingredients Index</a>
+            <a class='menuItem'>Settings</a>
+            <a class='menuItem'>About Us</a>
+            <a class='newRecipeButton'>New Recipe</a>
         </div>
 
         <div class='banner' id='directoryBanner'>
             <div class='container' id='dirBannerContainer'>
-                <a>Recipes By:</a>
-                <a class='dirItem1' id='featured'>Featured</a>
-                <a class='dirItem2' id='season'>Season</a>
-                <a class='dirItem3' id='Ingredients'>Ingredients</a>
-                <a class='dirItem4' id='prepTime'>Prep Time</a>
-                <a class='dirItem5' id='surpriseMe'>Surprise Me</a>
-                <a class='dirItem6' id='findRecipes'>Find Recipes</a>
+                <a class='dirItem'>Recipes By. . .</a>
+                <a class='dirItem' id='featured'>Featured</a>
+                <a class='dirItem' id='season'>Season</a>
+                <a class='dirItem' id='Ingredients'>Ingredients</a>
+                <a class='dirItem' id='prepTime'>Prep Time</a>
+                <a class='dirItem' id='surpriseMe'>Surprise Me</a>
+                <a class='dirItem' id='findRecipes'>Find Recipes </a>
+                <a class='dirItemSearch' id='search'>
+                    <input id='searchBar' type="text" placeholder="Search...">
+                </a>
             </div>
         </div>
 
-        <h1>What should I make for dinner?</h1>
-        {% if element1 %}
-        <p>{{element1}}</p>
-        {% endif %}
+        <div id="feedContainer" class="feedContainer">
+            <div id="feedInnerContainer" class="feedInnerContainer">
+                <div id='{{author}}{{2024}}' class="recipeContainer">
+                    <div class="recipeBanner">
+                        <a id="author">{{author}}</a>
+                        <a id="recipeDetailsBut"><i class="fa fa-ellipsis-h"></i></a>
+                        <a id="recipeBookmark"><i class="{% if false %}fa fa-bookmark-o{% else %}fa fa-bookmark{% endif %}"></i></a>
+                    </div>
+                    <div id= "recipe" class="recipe">
+                        <div id="recipeContentContainer" class="recipeContentContainer"> 
+                        {{content}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../static/wsimfd/js/home.js"></script>
     </body>
 </html>

@@ -16,17 +16,39 @@ body {
 #siteBanner {
     background-color: var(--green);
     overflow: hidden;
+    display: flex;
+    align-items: baseline;
+    
+
+}
+
+.SiteTitle{
+    float: left;
+    width: 80%;
+}
+
+.accountAnchor {
+    width: 20%;
+    float:right;
+}
+
+.SiteTitle p {
+    padding-left: 25px;
+    font-size: 32px;
+}
+
+.accountAnchor p {
+    font-size: 18px;
+}
+
+#dirBannerContainer {
+    width: 85vw;
 }
 
 #directoryBanner {
     background-color: var(--tan);
     display:flex;
-}
-
-#dirBannerContainer {
-    display: block;
-    margin-left: 0px;
-    margin-right: auto;
+    border-bottom: solid 1px var(--tan2);
 }
 
 #directoryBanner a {
@@ -35,25 +57,122 @@ body {
     color: var(--black);
     text-align: center;
     text-decoration: none;
-    border: solid 1px var(--tan2);
+    font-size: 16x;
+    padding-top: 10px;
+}
+
+.dirItem {
+    border-left: solid 1px var(--tan2);
     padding: 10px 25px;
-    font-size: 25px;
+}
+
+#directoryBanner #searchBar {
+    width: auto;
+    align-self: center;
 }
 
 #sidenav {
-    width:15vw;
+    width:16vw;
     position: fixed;
     right: 0px;
     background: var(--pink);
     overflow-x: hidden;
-    padding: 8px 0;
   }
   
   #sidenav a {
-    padding: 6px 8px 6px 16px;
     text-decoration: none;
     font-size: 25px;
     color: var(--black);
     display: block;
   }
 
+.menuItem, .newRecipeButton {
+    padding: 6px 8px 6px 16px;
+    margin-top: 10px;
+}
+
+.newRecipeButton {
+    background-color: var(--green);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+  
+  .arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 8vw solid transparent;
+    border-right: 8vw solid transparent;
+    border-top: 31px solid var(--green);
+  }
+
+
+/*-Recipe posts-*/
+
+  .recipeContainer {
+    background-color: var(--tan);
+    max-width: 330px;
+    min-width: 330px;
+    width:330px;
+    display: flex;
+    flex-flow: column;
+    margin: 20px;
+    border-radius: 4px;
+    border-width: 1;
+    box-shadow: var(--tan2) 0 3px 4px,var(--tan2) 0 6px 13px -3px, var(--tan2) 0 -3px 0 inset;
+    box-sizing: border-box;
+  }
+  
+  .recipeBanner{
+    padding:10px;
+    background-color: var(--pink);
+    border-top: 1px solid var(--pink);
+    border-bottom: 1px solid var(--pink);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+  
+  .recipeBanner a {
+    padding:3px;
+  }
+  
+  .recipeBanner #recipeDetailsBut, #recipeBookmark {
+    float: right;
+    padding-left:6px;
+    padding-right:6px;
+    font-size: 20px;
+  }
+  
+  .recipeBanner #recipeDetailsBut:hover {
+    background-color: var(--green);
+    border-radius: 100px;
+  }
+  
+  .recipeBanner #author:hover {
+    text-decoration: underline;
+  }
+  
+  .recipe{
+    padding: 10px;
+  }
+  
+  .recipeContentContainer {
+    display: inline;
+  }
+  
+  .button { /*like, share, follow (just a button so far)*/
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .recipeContentContainer img {
+    width:100%;
+    height:auto;
+  }
+  

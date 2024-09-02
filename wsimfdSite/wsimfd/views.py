@@ -6,5 +6,8 @@ from .models import Ingredient
 
 def index(request):
     template = loader.get_template("wsimfd/index.html")
-    context = {"element1": "hello, index!"}
+    context = {
+        'author':'Abel',
+        'content': 'this is a recipe!'
+    }
     return render(request, "wsimfd/index.html", context)
